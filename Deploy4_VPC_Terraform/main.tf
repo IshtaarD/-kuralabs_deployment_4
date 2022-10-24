@@ -26,3 +26,6 @@ module "SG" {
 }
 
 # import EC2 module
+module "EC2" {
+    source = "./modules/EC2"
+}
