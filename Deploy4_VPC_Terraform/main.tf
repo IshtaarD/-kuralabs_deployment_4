@@ -26,4 +26,5 @@ module "EC2" {
     vpc_id = module.VPC.vpc_id
     public_subnet_az1_id = module.VPC.public_subnet_az1_id
     private_subnet_az1_id = module.VPC.private_subnet_az1_id
+    key_name = var.key_name
 }

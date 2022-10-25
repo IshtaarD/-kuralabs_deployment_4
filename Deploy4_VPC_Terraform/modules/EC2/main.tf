@@ -43,7 +43,7 @@ resource "aws_instance" "web_server1" {
     key_name = var.key_name
     vpc_security_group_ids = [aws_security_group.web_ssh.id]
 
-    user_data = "${file("deploy.sh")}"
+    user_data = "${file("deploy4.sh")}"
 
     tags = {
         "Name" : "Webserver 1"
