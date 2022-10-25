@@ -7,7 +7,7 @@ variable "aws_secret_key" {}
 provider "aws" {
     access_key = var.aws_access_key
     secret_key = var.aws_secret_key
-    region = "us-east-1"
+    region = var.region
 }
 
 # import VPC module 
@@ -20,12 +20,10 @@ module "VPC" {
     private_subnet_az1_cidr = var.private_subnet_az1_cidr
 }
 
-# import Security Group module
-module "SG" {
-    source = "./modules/SG"
-}
-
 # import EC2 module
 module "EC2" {
     source = "./modules/EC2"
+    vpc_id = module.VPC.vpc_id
+    public_subnet_az1_id = module.VPC.public_subnet_az1_id
+    private_subnet_az1_id = module.VPC.private_subnet_az1_id
 }
